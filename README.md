@@ -4,7 +4,7 @@
 
 ##Summary
 
-One of the first questions a good programmer will ask themselves when they encounter a bug is "what is the error message telling me?". Error messages are your friend.
+One of the first questions programmers ask themselves when they encounter a bug is, "what is the error message telling me?" Error messages are your friend.
 
 These exercises contain bugs. Your task is to figure out what the error is and then change to code to remove the bug. In order to do this, you will have to read the error message that Ruby returns.
 
