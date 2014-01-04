@@ -1,14 +1,14 @@
-# Debugging Drill Read The Error 
- 
-##Learning Competencies 
+# Debugging Drill Read The Error
 
-##Summary 
+##Learning Competencies
 
- One of the first questions a good programmer will ask themselves when they encounter a bug is "what is the error message telling me?".  Error messages are your friend.
+##Summary
 
-These exercises contain bugs.  Your task is to figure out what the error is and then change to code to remove the bug.  In order to do this, you will have to read the error message that Ruby returns.
+One of the first questions programmers ask themselves when they encounter a bug is, "what is the error message telling me?" Error messages are your friend.
 
-There is usually more than one way to fix a bug.  
+These exercises contain bugs. Your task is to figure out what the error is and then change to code to remove the bug. In order to do this, you will have to read the error message that Ruby returns.
+
+There is usually more than one way to fix a bug.
 
 In the first exercise, you will get rid of the `ArgumentError` bug by changing the statement that _invokes_ the method.
 
@@ -18,27 +18,26 @@ The third exercise contains a few `TypeError`s, which are common bugs in [dynami
 
 ---
 
-Here's a juicy question: why would we rewrite the _invocation_ as opposed to the _definition_ of the method?  
+Here's a juicy question: why would we rewrite the _invocation_ as opposed to the _definition_ of the method?
 
-In a small program like this, the code is flexible enough to warrant either choice.  When working on larger applications, you have to constantly be aware of _how_ you are fixing bugs.  Fixing one bug can easily cause more bugs or confusion down the line if you are not careful.
+In a small program like this, the code is flexible enough to warrant either choice. When working on larger applications, you have to constantly be aware of _how_ you are fixing bugs. Fixing one bug can easily cause more bugs or confusion down the line if you are not careful.
 
 ## Objectives
 
 ### Error-related Exercises
 
-This challenges brings you back to the old Ruby Intro interface.  Complete the following exercises so they pass, and paste your solution code for each chunk into the gist.
+This challenges brings you back to the old Ruby Intro interface. Complete the following exercises so they pass, and paste your solution code for each chunk into the gist.
 
 * [Debugging ArgumentError - Part 1](/exercises/40)
 * [Debugging ArgumentError - Part 2](/exercises/39)
 * [Debugging TypeError](/exercises/44)
 
-<!-- 
-* [Fix some self-related bugs](/exercises/43)  need to make this more clear!  and less abstract.  -->
- 
+<!--
+* [Fix some self-related bugs](/exercises/43) need to make this more clear! and less abstract. -->
 
 ##Releases
-###Release 0 
+###Release 0
 
-##Optimize Your Learning 
+##Optimize Your Learning
 
 ##Resources
