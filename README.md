@@ -20,19 +20,19 @@ Complete the following exercises so they pass, and paste your solution code for 
 
 In the first exercise, you will get rid of the `ArgumentError` bug by changing the statement that _invokes_ the method.
 
-* [Debugging ArgumentError - Part 1](/exercises)
+* [Debugging ArgumentError - Part 1](https://socrates.devbootcamp.com/exercises/40)
 
 ###Release 1: Method Definitions 
 
 In the second exercise, you will have to change the method _definition_ in order to solve the bug.
 
-* [Debugging ArgumentError - Part 2](/exercises)
+* [Debugging ArgumentError - Part 2](https://socrates.devbootcamp.com/exercises/39)
 
 ###Release 2: Type Error
 
 The third exercise contains a few `TypeError`s, which are common bugs in [dynamically typed](http://en.wikipedia.org/wiki/Type_system#Dynamic_typing) languages such as Ruby.
 
-* [Debugging TypeError](/exercises)
+* [Debugging TypeError](https://socrates.devbootcamp.com/exercises/44)
 
 ##Optimize Your Learning
 
