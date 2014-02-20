@@ -42,4 +42,9 @@ Here's a juicy question: why would we rewrite the _invocation_ as opposed to the
 
 In a small program like this, the code is flexible enough to warrant either choice. When working on larger applications, you have to constantly be aware of _how_ you are fixing bugs. Fixing one bug can easily cause more bugs or confusion down the line if you are not careful.
 
+
+##How to submit
+
+You'll be doing these exercises on Socrates. Paste your solution to each problem from Socrates into `source/solution.rb` and submit a PR as you normally would.
+
 ##Resources
