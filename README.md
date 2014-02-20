@@ -16,8 +16,6 @@ Each exercise contains bugs. Your task is to figure out what the error is and th
 
 Complete the following exercises so they pass, and paste your solution code for each release into the solution file.
 
-**The links below go to exercises on Socrates. You don't need to submit a pull request for this one, just complete the exercise on Socrates. **
-
 ###Release 0: Syntax Error
 
 In the first exercise, you will get rid of the `ArgumentError` bug by changing the statement that _invokes_ the method.
