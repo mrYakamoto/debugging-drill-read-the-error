@@ -20,19 +20,19 @@ Complete the following exercises so they pass, and paste your solution code for 
 
 In the first exercise, you will get rid of the `ArgumentError` bug by changing the statement that _invokes_ the method.
 
-* [Debugging ArgumentError - Part 1](/exercises/40)
+* [Debugging ArgumentError - Part 1](https://socrates.devbootcamp.com/exercises/40)
 
 ###Release 1: Method Definitions 
 
 In the second exercise, you will have to change the method _definition_ in order to solve the bug.
 
-* [Debugging ArgumentError - Part 2](/exercises/39)
+* [Debugging ArgumentError - Part 2](https://socrates.devbootcamp.com/exercises/39)
 
 ###Release 2: Type Error
 
 The third exercise contains a few `TypeError`s, which are common bugs in [dynamically typed](http://en.wikipedia.org/wiki/Type_system#Dynamic_typing) languages such as Ruby.
 
-* [Debugging TypeError](/exercises/44)
+* [Debugging TypeError](https://socrates.devbootcamp.com/exercises/44)
 
 ##Optimize Your Learning
 
@@ -41,5 +41,10 @@ There is usually more than one way to fix a bug.
 Here's a juicy question: why would we rewrite the _invocation_ as opposed to the _definition_ of the method?
 
 In a small program like this, the code is flexible enough to warrant either choice. When working on larger applications, you have to constantly be aware of _how_ you are fixing bugs. Fixing one bug can easily cause more bugs or confusion down the line if you are not careful.
+
+
+##How to submit
+
+You'll be doing these exercises on Socrates. Paste your solution to each problem from Socrates into `source/solution.rb` and submit a PR as you normally would.
 
 ##Resources
