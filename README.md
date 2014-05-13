@@ -12,7 +12,7 @@ Each exercise contains bugs. Your task is to figure out what the error is and th
 
 ##Releases
 
-Complete the following exercises so they pass the RSPEC tests.
+Complete the following exercises so they pass the RSPEC.
 
 ###Release 0: Syntax Error
 
@@ -24,7 +24,7 @@ First, run the test to see it fail:
 $ rspec syntax_error_spec.rb
 ```
 
-Then, fix the code in ```syntax_error.rb``` until you get the test to pass.  We wrapped the method call we're testing in another method so you could fix it without having to mess with the spec file.  Do not change the spec file!
+Then, fix the code in ```syntax_error.rb``` until you get the test to pass.  Do not change the spec file!  You should only need to change the contents of sample_avg.
 
 ###Release 1: Method Definitions 
 

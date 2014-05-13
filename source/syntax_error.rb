@@ -1,6 +1,6 @@
 # Run the code. Read the error message.
 
-# Change the assigned value of sample_avg so that it does not throw an error.
+# Change the assigned value returned by sample_avg so that it does not throw an error.
 
 
 def mean(numbers)
