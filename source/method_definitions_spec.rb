@@ -4,11 +4,11 @@ require_relative "method_definitions"
 describe "mean" do
 
   it "accepts any number of arguments" do
-    method(:mean).arity.should eq -1
+    expect(method(:mean).arity).to eq(-1)
   end
-    
+
   it "returns the correct mean" do
-    mean(2,4,5,12).should eq(5)
-    mean(-3,10,7).should eq(4)
+    expect(mean(2,4,5,12)).to eq(5)
+    expect(mean(-3,10,7)).to eq(4)
   end
 end
