@@ -11,22 +11,7 @@ One of the first questions programmers ask themselves when they encounter a bug 
 Each exercise contains bugs. Your task is to figure out what the error is and then change to code to remove the bug. In order to do this, you will have to read the error message that Ruby returns.
 
 ##Releases
-
-Complete the following exercises so they pass the RSPEC.
-
-###Release 0: Syntax Error
-
-In the first exercise, you will get rid of the `ArgumentError` bug by changing the statement that _invokes_ the method.
-
-First, run the test to see it fail:
-
-```
-$ rspec syntax_error_spec.rb
-```
-
-Then, fix the code in ```syntax_error.rb``` until you get the test to pass.  Do not change the spec file!  You should only need to change the contents of sample_avg.
-
-###Release 1: Method Definitions 
+###Release 0: Method Definitions 
 
 In the second exercise, you will have to change the method _definition_ in order to solve the bug.
 
@@ -38,7 +23,7 @@ $ rspec method_definitions_spec.rb
 
 Then, fix the code in ```method_definitions.rb``` until you get the tests to pass.  Again, don't go changin' that spec file!
 
-###Release 2: Type Error
+###Release 1: Type Error
 
 The third exercise contains a few `TypeError`s, which are common bugs in [dynamically typed](http://en.wikipedia.org/wiki/Type_system#Dynamic_typing) languages such as Ruby.
 
