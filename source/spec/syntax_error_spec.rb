@@ -1,4 +1,4 @@
-require_relative "syntax_error"
+require_relative "../syntax_error"
 
 
 describe "sample_avg" do

@@ -1,4 +1,4 @@
-require_relative "type_error"
+require_relative "../type_error"
 
 describe 'print_and_sort' do
   before(:each) do
