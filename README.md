@@ -1,14 +1,26 @@
 # Debugging Drill Read The Error
 
-##Learning Competencies
-
-* Read error messages and trace the stack.
-
 ##Summary
+In this challenge, we're going to debug two methods that don't work.  Tests have been provided that desribe the desired behaviors of the two methods.  Our task is to figure out what the errors are and then alter the code to remove the bug. In order to do this, we will have to read the error messages that Ruby returns.
 
-One of the first questions programmers ask themselves when they encounter a bug is, "what is the error message telling me?" Error messages are your friend.
+The code we write will often not work the way we intended—at least not on the first pass.  Through different techniques, we can try to control the risk of our programs not working and minimize the impact of bugs (e.g., minimizing the time it takes to debug).  We'll be exposed to different techniques throughout Dev Bootcamp.  For example, running our code early and often as it's being developed should help us to find bugs in one area of our program before they've spilled into other areas.  Test-driven development is another technique that can help.
 
-Each exercise contains bugs. Your task is to figure out what the error is and then change to code to remove the bug. In order to do this, you will have to read the error message that Ruby returns.
+```
+show_me_errors.rb:3:in `block in show_me_errors': undefined local variable or method 'something' for main:Object (NameError)
+	from show_me_errors.rb:2:in `each'
+	from show_me_errors.rb:2:in `show_me_errors'
+	from show_me_errors.rb:9:in `<main>'
+```
+*Figure 1.*  Ruby error message.
+
+Inevitably, we will hit bugs.  More often than not when we do, we'll receive an error message full of helpful information (see Figure 1).  One of the first questions programmers ask themselves when they encounter a bug is, "What is the error message telling me?".
+
+On the first line in Figure 1, Ruby is telling us that on Line 3 of the file `show_me_errors`, there is a reference to `something`.  Ruby thinks `something` should be a local variable or a method, but it can't find a variable or method `something`.
+
+It's possible that just the information in the top line is enough to fix a bug.  However, sometimes the error shows up in one spot but originates in another.  The subsequent lines show a stack trace, or how Ruby got to Line 3 where it encountered the error.  Starting from the last line in Figure 1, Ruby was executing Line 9 of the file `show_me_errors.rb`, which sent it to Line 2 where it called the `#each` method.  Then in the block passed to `#each`, it hit the reference to `something`.  There's a lot of information in error messages, if we take the time to read it.
+
+When our code doesn't work, there is always the temptation to jump back to our code with the assumption that we know what's wrong, skipping over the error message entirely.  Resist that temptation.
+
 
 ##Releases
 ###Release 0: Method Definitions 
