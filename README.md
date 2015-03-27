@@ -35,19 +35,25 @@ $ rspec spec/mean_spec.rb
 
 Both tests will fail, but each will provide us with information on why they fail.  In other words, our tests set expectations for the `mean` method, and when those expectations aren't met, the tests inform us what went wrong.  
 
-When both tests pass, the bug is fixed. Do not change the tests.  Rather, change the method *definition* in order to fix the bug.  
+When both tests pass, the bug is fixed. Don't change the tests.  Rather, change the method *definition* in order to fix the bug.  
+
 
 ###Release 1: Type Error
+We'll now debug the `sort` method, which is defined in `source/sort.rb`.
 
-The third exercise contains a few `TypeError`s, which are common bugs in [dynamically typed](http://en.wikipedia.org/wiki/Type_system#Dynamic_typing) languages such as Ruby.
+Ruby is a [dynamically typed](http://en.wikipedia.org/wiki/Type_system#Dynamic_typing) programming language.  When we assign variables, we don't have to declare that variable `name` is an instance of the `String` class and variable `numbers` in an instance of the `Array` class.  And when we define methods that accept arguments, we don't have to specify that the arguments are of going to be instances of any particular classes.
 
-First, run the tests to see them fail:
+Most of the time, this is a good thing.  It allows us, as rubyists, to use [duck typing](http://en.wikipedia.org/wiki/Duck_typing#In_Ruby), which is a form of dynamic typing.  In duck typing, we're not interested in an object's class or what type of object it is, rather we're interested in the behaviors of the object or what methods we can call on it.
+
+Sometimes we can run into problems when the objects our program receives are of a different type than the ones we expected. This is called a `TypeError`.
+
+To begin debugging the `sort` method, let's get information about what's going wrong by running the tests that describe how the method should behave.  The tests are written in the file `source/spec/sort_spec.rb`.
 
 ```
 $ rspec type_error_spec.rb
 ```
 
-Then, fix the code in ```type_error.rb``` until you get all the tests to pass.  Of course, you wouldn't dream of changing the spec file.  All green?  Way to go, cowpoke!
+When all the tests pass, the bug is fixed. As the `mean` method, don't change the tests.  Rather, change the method in order to fix the bug.  
 
 
 ##Optimize Your Learning
