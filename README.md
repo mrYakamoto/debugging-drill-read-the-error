@@ -25,15 +25,17 @@ When our code doesn't work, there is always the temptation to jump back to our c
 ##Releases
 ###Release 0: Method Definitions 
 
-In the second exercise, you will have to change the method _definition_ in order to solve the bug.
+We'll begin by debugging the method `mean`, which is defined in the file `source/mean.rb`.  
 
-First, run the tests to see them fail:
+We have two tests describing how we want the `mean` method to function; the tests can be found in `source/spec/mean_spec.rb`. Run the tests to see them fail.  From the command line, navigate into the `source` directory, and then run ...
 
 ```
-$ rspec method_definitions_spec.rb
+$ rspec spec/mean_spec.rb
 ```
 
-Then, fix the code in ```method_definitions.rb``` until you get the tests to pass.  Again, don't go changin' that spec file!
+Both tests will fail, but each will provide us with information on why they fail.  In other words, our tests set expectations for the `mean` method, and when those expectations aren't met, the tests inform us what went wrong.  
+
+When both tests pass, the bug is fixed. Do not change the tests.  Rather, change the method *definition* in order to fix the bug.  
 
 ###Release 1: Type Error
 

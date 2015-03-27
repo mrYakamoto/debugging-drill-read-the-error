@@ -4,6 +4,5 @@
 
 
 def mean(numbers)
-  sum = numbers.inject(:+)
-  return sum / numbers.length
+  numbers.inject(:+) / numbers.length
 end
