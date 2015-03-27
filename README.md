@@ -1,9 +1,12 @@
 # Debugging Drill Read The Error
 
-##Summary
-In this challenge, we're going to debug two methods that don't work.  Tests have been provided that desribe the desired behaviors of the two methods.  Our task is to figure out what the errors are and then alter the code to remove the bug. In order to do this, we will have to read the error messages that Ruby returns.
+## Summary
+In this challenge, we're going to debug two small methods.  Tests have been provided that desribe the desired behaviors of the two methods.  Our task is to deduce why the methods aren't working as intended and then to fix them.
 
+### The Reality of Bugs
 The code we write will often not work the way we intended—at least not on the first pass.  Through different techniques, we can try to control the risk of our programs not working and minimize the impact of bugs (e.g., minimizing the time it takes to debug).  We'll be exposed to different techniques throughout Dev Bootcamp.  For example, running our code early and often as it's being developed should help us to find bugs in one area of our program before they've spilled into other areas.  Test-driven development is another technique that can help.
+
+### Read the Error Message
 
 ```
 show_me_errors.rb:3:in `block in show_me_errors': undefined local variable or method 'something' for main:Object (NameError)
@@ -33,15 +36,15 @@ We have two tests describing how we want the `mean` method to function; the test
 $ rspec spec/mean_spec.rb
 ```
 
-Both tests will fail, but each will provide us with information on why they fail.  In other words, our tests set expectations for the `mean` method, and when those expectations aren't met, the tests inform us what went wrong.  
+Both tests will fail.  In doing so, they will provide us with information on why they fail.  In other words, our tests set expectations for the `mean` method, and when those expectations aren't met, the failing tests inform us what went wrong.  
 
-When both tests pass, the bug is fixed. Don't change the tests.  Rather, change the method *definition* in order to fix the bug.  
+Don't change the tests.  Rather, change the method *definition* in order to pass the tests.  When both tests pass, the bug is fixed. 
 
 
 ###Release 1: Type Error
 We'll now debug the `sort` method, which is defined in `source/sort.rb`.
 
-Ruby is a [dynamically typed](http://en.wikipedia.org/wiki/Type_system#Dynamic_typing) programming language.  When we assign variables, we don't have to declare that variable `name` is an instance of the `String` class and variable `numbers` in an instance of the `Array` class.  And when we define methods that accept arguments, we don't have to specify that the arguments are of going to be instances of any particular classes.
+Ruby is a [dynamically typed](http://en.wikipedia.org/wiki/Type_system#Dynamic_typing) programming language.  When we assign variables, we don't have to specify their assigned values' types.  In other words, we don't have to declare that that the variable `name` is an instance of the `String` class and variable `numbers` in an instance of the `Array` class.  And when we define methods that accept arguments, we don't have to specify that the arguments are going to be instances of any particular classes.
 
 Most of the time, this is a good thing.  It allows us, as rubyists, to use [duck typing](http://en.wikipedia.org/wiki/Duck_typing#In_Ruby), which is a form of dynamic typing.  In duck typing, we're not interested in an object's class or what type of object it is, rather we're interested in the behaviors of the object or what methods we can call on it.
 
@@ -59,7 +62,7 @@ When all the tests pass, the bug is fixed. As the `mean` method, don't change th
 ##Conclusion
 Our code is going to contain bugs.  Learning how to approach fixing them is a real skill.  
 
-There is usually more than one way to fix a bug.  In this challenge, our options for fixing bugs was limited because we were not able to change the tests (i.e., how we wanted the methods to behave). 
+There is usually more than one way to fix a bug.  In this challenge, our options for fixing bugs were limited because we were not able to change the tests (i.e., how we wanted to call the methods and how they behaved).
 
-Here's a juicy question: why would we rewrite the *invocation* of a method as opposed to the *definition* of the method?  In a small program like this, the code is flexible enough to warrant either choice. When working on larger applications, you have to constantly be aware of *how* you are fixing bugs. Fixing one bug can easily cause more bugs or confusion down the line if you are not careful.
+Here's a juicy question: why might we decide to rewrite the *invocation* of a method as opposed to the *definition* of the method?  In a small program like this, the code is flexible enough to warrant either choice. When working on larger applications, you have to constantly be aware of *how* you are fixing bugs. Fixing one bug can easily cause more bugs or confusion down the line if you are not careful.
 
