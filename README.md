@@ -56,11 +56,10 @@ $ rspec type_error_spec.rb
 When all the tests pass, the bug is fixed. As the `mean` method, don't change the tests.  Rather, change the method in order to fix the bug.  
 
 
-##Optimize Your Learning
+##Conclusion
+Our code is going to contain bugs.  Learning how to approach fixing them is a real skill.  
 
-There is usually more than one way to fix a bug.
+There is usually more than one way to fix a bug.  In this challenge, our options for fixing bugs was limited because we were not able to change the tests (i.e., how we wanted the methods to behave). 
 
-Here's a juicy question: why would we rewrite the _invocation_ as opposed to the _definition_ of the method?
-
-In a small program like this, the code is flexible enough to warrant either choice. When working on larger applications, you have to constantly be aware of _how_ you are fixing bugs. Fixing one bug can easily cause more bugs or confusion down the line if you are not careful.
+Here's a juicy question: why would we rewrite the *invocation* of a method as opposed to the *definition* of the method?  In a small program like this, the code is flexible enough to warrant either choice. When working on larger applications, you have to constantly be aware of *how* you are fixing bugs. Fixing one bug can easily cause more bugs or confusion down the line if you are not careful.
 
