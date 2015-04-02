@@ -16,13 +16,13 @@ show_me_errors.rb:3:in `block in show_me_errors': undefined local variable or me
 ```
 *Figure 1.*  Ruby error message.
 
+When our code doesn't work, there is always the temptation to jump back to our code with the assumption that we know what's wrong, skipping over the error message entirely.  Resist that temptation.
+
 Inevitably, we will hit bugs.  More often than not when we do, we'll receive an error message full of helpful information (see Figure 1).  One of the first questions programmers ask themselves when they encounter a bug is, "What is the error message telling me?".
 
 On the first line in Figure 1, Ruby is telling us that on Line 3 of the file `show_me_errors`, there is a reference to `something`.  Ruby thinks `something` should be a local variable or a method, but it can't find a variable or method `something`.
 
 It's possible that just the information in the top line is enough to fix a bug.  However, sometimes the error shows up in one spot but originates in another.  The subsequent lines show a stack trace, or how Ruby got to Line 3 where it encountered the error.  Starting from the last line in Figure 1, Ruby was executing Line 9 of the file `show_me_errors.rb`, which sent it to Line 2 where it called the `#each` method.  Then in the block passed to `#each`, it hit the reference to `something`.  There's a lot of information in error messages, if we take the time to read it.
-
-When our code doesn't work, there is always the temptation to jump back to our code with the assumption that we know what's wrong, skipping over the error message entirely.  Resist that temptation.
 
 
 ##Releases
