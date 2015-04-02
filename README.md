@@ -1,61 +1,68 @@
 # Debugging Drill Read The Error
 
-##Learning Competencies
+## Summary
+In this challenge, we're going to debug two small methods.  Tests have been provided that desribe the desired behaviors of the two methods.  Our task is to deduce why the methods aren't working as intended and then to fix them.
 
-* Read error messages and trace the stack.
+### The Reality of Bugs
+The code we write will often not work the way we intended—at least not on the first pass.  Through different techniques, we can try to control the risk of our programs not working and minimize the impact of bugs (e.g., minimizing the time it takes to debug).  We'll be exposed to different techniques throughout Dev Bootcamp.  For example, running our code early and often as it's being developed should help us to find bugs in one area of our program before they've spilled into other areas.  Test-driven development is another technique that can help.
 
-##Summary
+### Read the Error Message
 
-One of the first questions programmers ask themselves when they encounter a bug is, "what is the error message telling me?" Error messages are your friend.
+```
+show_me_errors.rb:3:in `block in show_me_errors': undefined local variable or method 'something' for main:Object (NameError)
+	from show_me_errors.rb:2:in `each'
+	from show_me_errors.rb:2:in `show_me_errors'
+	from show_me_errors.rb:9:in `<main>'
+```
+*Figure 1.*  Ruby error message.
 
-Each exercise contains bugs. Your task is to figure out what the error is and then change to code to remove the bug. In order to do this, you will have to read the error message that Ruby returns.
+When our code doesn't work, there is always the temptation to jump back to our code with the assumption that we know what's wrong, skipping over the error message entirely.  Resist that temptation.
+
+Inevitably, we will hit bugs.  More often than not when we do, we'll receive an error message full of helpful information (see Figure 1).  One of the first questions programmers ask themselves when they encounter a bug is, "What is the error message telling me?".
+
+On the first line in Figure 1, Ruby is telling us that on Line 3 of the file `show_me_errors`, there is a reference to `something`.  Ruby thinks `something` should be a local variable or a method, but it can't find a variable or method `something`.
+
+It's possible that just the information in the top line is enough to fix a bug.  However, sometimes the error shows up in one spot but originates in another.  The subsequent lines show a stack trace, or how Ruby got to Line 3 where it encountered the error.  Starting from the last line in Figure 1, Ruby was executing Line 9 of the file `show_me_errors.rb`, which sent it to Line 2 where it called the `#each` method.  Then in the block passed to `#each`, it hit the reference to `something`.  There's a lot of information in error messages, if we take the time to read it.
+
 
 ##Releases
+###Release 0: Method Definitions 
 
-Complete the following exercises so they pass the RSPEC.
+We'll begin by debugging the method `mean`, which is defined in the file `source/mean.rb`.  
 
-###Release 0: Syntax Error
-
-In the first exercise, you will get rid of the `ArgumentError` bug by changing the statement that _invokes_ the method.
-
-First, run the test to see it fail:
+We have two tests describing how we want the `mean` method to function; the tests can be found in `source/spec/mean_spec.rb`. Run the tests to see them fail.  From the command line, navigate into the `source` directory, and then run ...
 
 ```
-$ rspec syntax_error_spec.rb
+$ rspec spec/mean_spec.rb
 ```
 
-Then, fix the code in ```syntax_error.rb``` until you get the test to pass.  Do not change the spec file!  You should only need to change the contents of sample_avg.
+Both tests will fail.  In doing so, they will provide us with information on why they fail.  In other words, our tests set expectations for the `mean` method, and when those expectations aren't met, the failing tests inform us what went wrong.  
 
-###Release 1: Method Definitions 
+Don't change the tests.  Rather, change the method *definition* in order to pass the tests.  When both tests pass, the bug is fixed. 
 
-In the second exercise, you will have to change the method _definition_ in order to solve the bug.
 
-First, run the tests to see them fail:
+###Release 1: Type Error
+We'll now debug the `sort` method, which is defined in `source/sort.rb`.
 
-```
-$ rspec method_definitions_spec.rb
-```
+Ruby is a [dynamically typed](http://en.wikipedia.org/wiki/Type_system#Dynamic_typing) programming language.  When we assign variables, we don't have to specify their assigned values' types.  In other words, we don't have to declare that that the variable `name` is an instance of the `String` class and variable `numbers` in an instance of the `Array` class.  And when we define methods that accept arguments, we don't have to specify that the arguments are going to be instances of any particular classes.
 
-Then, fix the code in ```method_definitions.rb``` until you get the tests to pass.  Again, don't go changin' that spec file!
+Most of the time, this is a good thing.  It allows us, as rubyists, to use [duck typing](http://en.wikipedia.org/wiki/Duck_typing#In_Ruby), which is a form of dynamic typing.  In duck typing, we're not interested in an object's class or what type of object it is, rather we're interested in the behaviors of the object or what methods we can call on it.
 
-###Release 2: Type Error
+Sometimes we can run into problems when the objects our program receives are of a different type than the ones we expected. This is called a `TypeError`.
 
-The third exercise contains a few `TypeError`s, which are common bugs in [dynamically typed](http://en.wikipedia.org/wiki/Type_system#Dynamic_typing) languages such as Ruby.
-
-First, run the tests to see them fail:
+To begin debugging the `sort` method, let's get information about what's going wrong by running the tests that describe how the method should behave.  The tests are written in the file `source/spec/sort_spec.rb`.
 
 ```
 $ rspec type_error_spec.rb
 ```
 
-Then, fix the code in ```type_error.rb``` until you get all the tests to pass.  Of course, you wouldn't dream of changing the spec file.  All green?  Way to go, cowpoke!
+When all the tests pass, the bug is fixed. As the `mean` method, don't change the tests.  Rather, change the method in order to fix the bug.  
 
 
-##Optimize Your Learning
+##Conclusion
+Our code is going to contain bugs.  Learning how to approach fixing them is a real skill.  
 
-There is usually more than one way to fix a bug.
+There is usually more than one way to fix a bug.  In this challenge, our options for fixing bugs were limited because we were not able to change the tests (i.e., how we wanted to call the methods and how they behaved).
 
-Here's a juicy question: why would we rewrite the _invocation_ as opposed to the _definition_ of the method?
-
-In a small program like this, the code is flexible enough to warrant either choice. When working on larger applications, you have to constantly be aware of _how_ you are fixing bugs. Fixing one bug can easily cause more bugs or confusion down the line if you are not careful.
+Here's a juicy question: why might we decide to rewrite the *invocation* of a method as opposed to the *definition* of the method?  In a small program like this, the code is flexible enough to warrant either choice. When working on larger applications, you have to constantly be aware of *how* you are fixing bugs. Fixing one bug can easily cause more bugs or confusion down the line if you are not careful.
 

@@ -1,4 +1,4 @@
-require_relative "method_definitions"
+require_relative "../mean"
 
 
 describe "mean" do
