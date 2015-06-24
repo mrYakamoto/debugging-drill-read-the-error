@@ -6,29 +6,81 @@ In this challenge, we're going to debug two small methods.  Tests have been prov
 ### The Reality of Bugs
 The code we write will often not work the way we intended—at least not on the first pass.  Through different techniques, we can try to control the risk of our programs not working and minimize the impact of bugs (e.g., minimizing the time it takes to debug).  We'll be exposed to different techniques throughout Dev Bootcamp.  For example, running our code early and often as it's being developed should help us to find bugs in one area of our program before they've spilled into other areas.  Test-driven development is another technique that can help.
 
-### Read the Error Message
 
-```
-show_me_errors.rb:3:in `block in show_me_errors': undefined local variable or method 'something' for main:Object (NameError)
-	from show_me_errors.rb:2:in `each'
-	from show_me_errors.rb:2:in `show_me_errors'
-	from show_me_errors.rb:9:in `<main>'
-```
-*Figure 1.*  Ruby error message.
+## How to Read A Stack Trace
 
-When our code doesn't work, there is always the temptation to jump back to our code with the assumption that we know what's wrong, skipping over the error message entirely.  Resist that temptation.
+Reading a stack trace effectively will save you time and anguish throughout your career. Ruby provides you a wealth of information about your code when things go wrong, make sure you use all of it to debug as quickly and painlessly as you can.
 
-Inevitably, we will hit bugs.  More often than not when we do, we'll receive an error message full of helpful information (see Figure 1).  One of the first questions programmers ask themselves when they encounter a bug is, "What is the error message telling me?".
+### What's a Stack Trace?
+You've already seen stack traces many times!  A "stack trace" is the _error message_ you see when a bug in your Ruby program causes Ruby to crash. Everytime you've had a bug that upset Ruby, it provided a stack trace so you could track down the problem in your code.
 
-On the first line in Figure 1, Ruby is telling us that on Line 3 of the file `show_me_errors`, there is a reference to `something`.  Ruby thinks `something` should be a local variable or a method, but it can't find a variable or method `something`.
+You will see stack traces every day for the rest of your programming career. As you might imagine, it's important we become familiar with the structure of a stack trace. The better you know how to read one, the faster you can debug your code.
 
-It's possible that just the information in the top line is enough to fix a bug.  However, sometimes the error shows up in one spot but originates in another.  The subsequent lines show a stack trace, or how Ruby got to Line 3 where it encountered the error.  Starting from the last line in Figure 1, Ruby was executing Line 9 of the file `show_me_errors.rb`, which sent it to Line 2 where it called the `#each` method.  Then in the block passed to `#each`, it hit the reference to `something`.  There's a lot of information in error messages, if we take the time to read it.
+We're going to learn about the structure of a stack trace by stepping through an example step-by-step. We'll be highlighting pieces of the stack trace along the way using the image below.
 
+![Example 0](./assets/slides/canvas-0.png)
+
+In this image there are three components.
+
+ 1. The terminal where I am running `ruby runner.rb` and getting back a stack trace (error) from Ruby because I have a bug in my code.
+ 2. The contents of `runner.rb`, the Ruby file I am running.
+ 3. The contents of `greetings.rb`, the Ruby file that `runner.rb` is using.
+
+
+Before continuing, please familiarize yourself with the code in this repository. Read it, understand it, and run it. Once you're comfortable,  continue.
+
+### Taking it Step-By-Step
+
+
+![Example 2](./assets/slides/canvas-2.png)
+
+The first step in reading this stack trace, is to look at the first line. The highlighted section shows that this particular error occurred in the file `/path/to/code/greetings.rb` on my computer. That matches up with my `greetings.rb` file. This means my error occurred somewhere in that file. Useful information!
+
+![Example 3](./assets/slides/canvas-3.png)
+
+Next we see a number just to the right of file path we just read. That number is the _line number_ where this error occurred. Now we know that the error occurred in `greetings.rb` on the 11th line of the file. How nice of Ruby to help us narrow this down!
+
+![Example 4](./assets/slides/canvas-4.png)
+
+Ruby gives us a little more information. It explicitly tells us that this error occurred in the `create_student` method. It might feel redundant here, but knowing the name of the method is nice if we're getting an error in someone else's library. We might not be able to dig into their code right away and find the file and line number, but at least we know the name of the method that blew up.
+
+![Example 5](./assets/slides/canvas-5.png)
+
+The next section of the stack trace shows us the _exception_. This is Ruby's error message. It's telling us that there was an undefined local variable (or method) on line 11 of `greetings.rb` that it didn't recognize. Then it tells us this is a `NameError`. That's pretty useful information.
+
+Reading this error message is the _most important part of reading a stack trace_. If you're not reading what Ruby is telling you is wrong, how can you hope to ever debug your code? Ruby's already told you where the error is and the nature of the error. You should be grateful!
+
+
+![Example 6](./assets/slides/canvas-6.png)
+
+
+Now that Ruby has told us about the error, it's going to help us trace what led to the error. Above we see that Ruby is telling us that the error in `create_student` occurred because the faulty `create_student` method was run by the `student_greeting` method on line 21 of `greetings.rb`.
+
+Ruby is helping us trace the path of execution through the program. It wants us to see how the error happened by showing us how we reached the faulty line of code in the first place.
+
+With this information we know that this call to our broken method came from the method `student_greeting`.
+
+![Example 7](./assets/slides/canvas-7.png)
+
+If we continue down the stack trace, we see that it was `runner.rb` on line 3 that called `student_greeting`. We already know that `student_greeting` called `create_student`. We also know that `create_student` caused an error.
+
+If you read it from bottom-to-top we can say:
+
+> The code on line 3 of runner.rb called the code on line 21 of greetings.rb which in turn called the code on line 11 of greetings.rb. The code on line 11 crashes because it didn't recognize the undefined local variable or method called `lsat`.
+
+
+![Example 8](./assets/slides/canvas-8.png)
+
+Putting all the pieces of this stack trace together, we're able to see the following:
+
+With this stack trace I have learned that line 11 of greetings.rb was executed as part of the `create_student` method. When it ran, the program was unable to find the variable `lsat` and it crashed. This all happened because I ran `runner.rb` in my terminal and it called `student_greeting` which called my buggy method `create_student`.
+
+So why couldn't it find `lsat` on line 11 of `greetings.rb`? Well, this is the most common bug of all, we had a typo!
 
 ##Releases
-###Release 0: Method Definitions 
+###Release 0: Method Definitions
 
-We'll begin by debugging the method `mean`, which is defined in the file `source/mean.rb`.  
+We'll begin by debugging the method `mean`, which is defined in the file `source/mean.rb`.
 
 We have two tests describing how we want the `mean` method to function; the tests can be found in `source/spec/mean_spec.rb`. Run the tests to see them fail.  From the command line, navigate into the `source` directory, and then run ...
 
@@ -36,9 +88,9 @@ We have two tests describing how we want the `mean` method to function; the test
 $ rspec spec/mean_spec.rb
 ```
 
-Both tests will fail.  In doing so, they will provide us with information on why they fail.  In other words, our tests set expectations for the `mean` method, and when those expectations aren't met, the failing tests inform us what went wrong.  
+Both tests will fail.  In doing so, they will provide us with information on why they fail.  In other words, our tests set expectations for the `mean` method, and when those expectations aren't met, the failing tests inform us what went wrong.
 
-Don't change the tests.  Rather, change the method *definition* in order to pass the tests.  When both tests pass, the bug is fixed. 
+Don't change the tests.  Rather, change the method *definition* in order to pass the tests.  When both tests pass, the bug is fixed.
 
 
 ###Release 1: Type Error
@@ -56,11 +108,11 @@ To begin debugging the `sort` method, let's get information about what's going w
 $ rspec type_error_spec.rb
 ```
 
-When all the tests pass, the bug is fixed. As the `mean` method, don't change the tests.  Rather, change the method in order to fix the bug.  
+When all the tests pass, the bug is fixed. As the `mean` method, don't change the tests.  Rather, change the method in order to fix the bug.
 
 
 ##Conclusion
-Our code is going to contain bugs.  Learning how to approach fixing them is a real skill.  
+Our code is going to contain bugs.  Learning how to approach fixing them is a real skill.
 
 There is usually more than one way to fix a bug.  In this challenge, our options for fixing bugs were limited because we were not able to change the tests (i.e., how we wanted to call the methods and how they behaved).
 
