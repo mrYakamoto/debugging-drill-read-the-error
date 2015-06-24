@@ -1,18 +1,19 @@
 # Debugging Drill Read The Error
 
 ## Summary
-In this challenge, we're going to debug two small methods.  Tests have been provided that desribe the desired behaviors of the two methods.  Our task is to deduce why the methods aren't working as intended and then to fix them.
+In this challenge, we're going to debug two small methods. Tests have been provided that desribe the desired behaviors of the two methods. Our task is to deduce why the methods aren't working as intended and then to fix them.
+
+When our code doesn't work, there is always the temptation to jump back to our code with the assumption that we know what's wrong, skipping over the error message entirely. Resist that temptation.
 
 ### The Reality of Bugs
-The code we write will often not work the way we intended—at least not on the first pass.  Through different techniques, we can try to control the risk of our programs not working and minimize the impact of bugs (e.g., minimizing the time it takes to debug).  We'll be exposed to different techniques throughout Dev Bootcamp.  For example, running our code early and often as it's being developed should help us to find bugs in one area of our program before they've spilled into other areas.  Test-driven development is another technique that can help.
-
+The code we write will often not work the way we intended—at least not on the first pass. Through different techniques, we can try to control the risk of our programs not working and minimize the impact of bugs (e.g., minimizing the time it takes to debug). We'll be exposed to different techniques throughout Dev Bootcamp. For example, running our code early and often as it's being developed should help us to find bugs in one area of our program before they've spilled into other areas. Test-driven development is another technique that can help.
 
 ## How to Read A Stack Trace
 
 Reading a stack trace effectively will save you time and anguish throughout your career. Ruby provides you a wealth of information about your code when things go wrong, make sure you use all of it to debug as quickly and painlessly as you can.
 
 ### What's a Stack Trace?
-You've already seen stack traces many times!  A "stack trace" is the _error message_ you see when a bug in your Ruby program causes Ruby to crash. Everytime you've had a bug that upset Ruby, it provided a stack trace so you could track down the problem in your code.
+You've already seen stack traces many times! A "stack trace" is the _error message_ you see when a bug in your Ruby program causes Ruby to crash. Everytime you've had a bug that upset Ruby, it provided a stack trace so you could track down the problem in your code.
 
 You will see stack traces every day for the rest of your programming career. As you might imagine, it's important we become familiar with the structure of a stack trace. The better you know how to read one, the faster you can debug your code.
 
