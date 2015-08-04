@@ -102,15 +102,14 @@ So why couldn't Ruby find `lsat` on Line 11 of `greetings.rb`? Well, this is the
 
 ##Releases
 ###Release 0: Method Definitions
-We'll begin by debugging the method `mean`, which is defined in the file `mean.rb`.
-
-We have two tests describing how we want the `mean` method to function; the tests can be found in `spec/mean_spec.rb`. Run the tests to see them fail.  From the command line, navigate into the `source` directory, and then run ...
-
-```
+```bash
 $ rspec spec/mean_spec.rb
 ```
+*Figure 9*.  Running only the tests in the file `spec/mean_spec.rb`.
 
-Both tests will fail.  In doing so, they will provide us with information on why they fail.  In other words, our tests set expectations for the `mean` method, and when those expectations aren't met, the failing tests inform us what went wrong.
+We'll begin by debugging the method `mean`, which is defined in the file `mean.rb`.
+
+We have two tests describing how we want the `mean` method to function; the tests can be found in `spec/mean_spec.rb`. Run the tests to see them fail (see Figure 9).  Both tests will fail.  In doing so, they will provide us with information on why they fail.  In other words, our tests set expectations for the `mean` method, and when those expectations aren't met, the failing tests inform us what went wrong.
 
 Don't change the tests.  Rather, change the method *definition* in order to pass the tests.  When both tests pass, the bug is fixed.
 
@@ -126,11 +125,7 @@ Sometimes we can run into problems when the objects our program receives are of 
 
 To begin debugging the `sort` method, let's get information about what's going wrong by running the tests that describe how the method should behave.  The tests are written in the file `spec/sort_spec.rb`.
 
-```
-$ rspec type_error_spec.rb
-```
-
-When all the tests pass, the bug is fixed. As the `mean` method, don't change the tests.  Rather, change the method in order to fix the bug.
+When all the tests pass, the bug is fixed. As with debugging the `mean` method, don't change the tests.  Rather, change the method in order to fix the bug.
 
 
 ##Conclusion
