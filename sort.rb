@@ -1,3 +1,3 @@
 def sort(objects)
-  objects.sort
+  objects.sort{ |a,b| a.to_s <=> b.to_s }
 end
